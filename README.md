@@ -18,7 +18,7 @@ python3 ./usgae.py
 
 一、下载项目源码，选择 `Download Zip`并解压
 
-二、登录[杭电上课啦网页版平台](http://skl.hduhelp)
+二、登录[杭电上课啦网页版平台](http://skl.hduhelp.com)
 
 三、进入网页版`上课啦`界面
 
