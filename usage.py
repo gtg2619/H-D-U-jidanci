@@ -13,7 +13,7 @@ TIME = 300 #考试时间(sec)
 flag = 0 #report the error , 1 for error
 ttt = 0
 
-XAUTHTOKEN = ["<localStorage.sessionId>"]#浏览器控制台或者抓包看
+XAUTHTOKEN = ["ea4454bc-767b-4a0c-a640-49ecee6418c7"]#浏览器控制台或者抓包看
 
 HOST = "http://skl.hdu.edu.cn"
 
