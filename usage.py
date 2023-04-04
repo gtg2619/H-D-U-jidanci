@@ -1,19 +1,21 @@
+# -- coding: utf-8 --
+
 import requests
 import random
 import string
 import time
 import json
+import sys
 
 from solver import getAnswer
 
-TYPE = '1' #0自测，1考试
+TYPE = '0' #0自测，1考试
 WEEK = '5' #第几周
-TIME = 300 #考试时间(sec)
+TIME = 300  #考试时间(sec)
 
 flag = 0 #report the error , 1 for error
 ttt = 0
-
-XAUTHTOKEN = ["ea4454bc-767b-4a0c-a640-49ecee6418c7"]#浏览器控制台或者抓包看
+XAUTHTOKEN = ['792a7e91-31e7-4cde-a366-1c95d6b05b50']#浏览器控制台或者抓包看
 
 HOST = "http://skl.hdu.edu.cn"
 
@@ -39,7 +41,10 @@ def visit_exam_api():
               "Skl-Ticket": Skl_Ticket(),
               "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/48.0.2564.116 Mobile Safari/537.36 T7/10.3 SearchCraft/2.6.2 (Baidu; P1 7.0)"
               }
-    content = requests.get(url, headers = headers).content.decode('utf8')
+    content = requests.get(url, headers = headers).text
+    if content == "":
+        print('Token失效')
+        exit
     questions_obj = json.loads(content)
     if questions_obj.__contains__("code"):
         print(f"Token {str(ttt)} jumped" )
@@ -70,28 +75,37 @@ def visit_save_api(body):
               "Skl-Ticket": Skl_Ticket(),
               "User-Agent": "Mozilla/5.0 (Linux; Android 7.0; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/48.0.2564.116 Mobile Safari/537.36 T7/10.3 SearchCraft/2.6.2 (Baidu; P1 7.0)",
               "Content-Type": "application/json"}
-    time.sleep(TIME)
+    while True:
+        time.sleep(1)
+        if int(time.time()) - startTime >= TIME:
+            break
     requests.post(url=url, headers=headers, data=json.dumps(body))
 
+def getTimeStamp():
+    now = int(time.time())
+    timeArray = time.localtime(now)
+    otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+    print(otherStyleTime)
+    return now
 
 if __name__ == "__main__":
-    times = 0
-    while True:
-        with open("dictionary.txt","r") as file:
-            dictionary = json.loads(file.read())
-            try:
-                flag = 0
-                visit_exam_api()
-            except Exception as e:
-                print(e)
-        if flag == 0:
-            with open("dictionary.txt","w") as file:
-                file.write(json.dumps(dictionary))
-        
-        ttt = (ttt + 1) % len(XAUTHTOKEN)
-        if ttt == 0:
-            # os.system(f"cp dictionary.txt dictionary{str(times)}.txt")
-            times = times + 1
-        exit()
+    print("start at ", end="")
+    startTime = getTimeStamp()
+    try:
+        requests.get(url=f"https://cdn.jsdelivr.net/gh/lyc8503/baicizhan-word-meaning-API/data/words/{object['answer'+char]}.json",verify=False).content.decode("unicode_escape")
+    except Exception as e:
+        print('API风控或网络错误，进程结束')
+        sys.exit()
+    with open("dictionary.txt","r") as file:
+        dictionary = json.loads(file.read())
+        try:
+            flag = 0
+            visit_exam_api()
+        except Exception as e:
+            print(e)
+    print("end at ", end="")
+    endTime = getTimeStamp()
+    print(f"totally spend {endTime-startTime} seconds")
+
 
 

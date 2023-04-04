@@ -1,6 +1,8 @@
 import random
 import json
 
+from APIsolver import getAPIAnswer
+
 def getAnswer(object):
     answer = ""
     with open("dictionary.txt","r") as file:
@@ -14,6 +16,8 @@ def getAnswer(object):
                 answer = 'C'
             elif dictionary[object["title"]] == object["answerD"]:
                 answer = 'D'  
+    if answer == "":
+        answer = getAPIAnswer(object)
     if answer == "":
         answer = ''.join(random.choice('ABCD'))
     return answer
