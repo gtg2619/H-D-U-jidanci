@@ -9,13 +9,13 @@ import sys
 
 from solver import getAnswer
 
-TYPE = '0' #0自测，1考试
+TYPE = '1' #0自测，1考试
 WEEK = '5' #第几周
-TIME = 300  #考试时间(sec)
+TIME = 300  #考试时间(sec) 由于考试时间限制为8分钟，最好不要设定为大于460
 
 flag = 0 #report the error , 1 for error
 ttt = 0
-XAUTHTOKEN = ['792a7e91-31e7-4cde-a366-1c95d6b05b50']#浏览器控制台或者抓包看
+XAUTHTOKEN = ['29555cc6-0d99-404f-9f21-80374e186006']#浏览器控制台或者抓包看
 
 HOST = "http://skl.hdu.edu.cn"
 
