@@ -2,6 +2,12 @@
 
 针对 [HDU平台](https://skl.hduhelp.com/#/call/course) 的我爱记单词脚本。平均分94。（每周题库不同，请使用前获取最新dictionary.txt）
 
+安装依赖
+
+```
+python3 -m pip install -r requirements.txt
+```
+
 键入`sessionId`及`WEEK`运行
 
 ```
@@ -33,3 +39,9 @@ python3 ./usgae.py
 七、运行脚本`python3 ./usage.py`。这个时候考试已经发起了
 
 八、等待脚本运行完成。等待的时间大概比设定的 TIME 值多一秒。结束即完成。
+
+### 样例
+
+<img src="README/88138918546617B1602C7261985D6E3D-16806264223375.jpg" alt="img" style="zoom:67%;" />
+
+<img src="README/5C317539B96AFC36A7F97DC0ADD768E0-16806264176443.jpg" alt="img" style="zoom:33%;" />
