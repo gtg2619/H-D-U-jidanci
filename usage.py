@@ -92,7 +92,7 @@ if __name__ == "__main__":
     print("start at ", end="")
     startTime = getTimeStamp()
     try:
-        requests.get(url=f"https://cdn.jsdelivr.net/gh/lyc8503/baicizhan-word-meaning-API/data/words/{object['answer'+char]}.json",verify=False).content.decode("unicode_escape")
+        requests.get(url=f"https://cdn.jsdelivr.net/gh/lyc8503/baicizhan-word-meaning-API/data/words/word.json",verify=False).content.decode("unicode_escape")
     except Exception as e:
         print('API风控或网络错误，进程结束')
         sys.exit()
