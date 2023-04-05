@@ -15,7 +15,7 @@ TIME = 300  #考试时间(sec) 由于考试时间限制为8分钟，最好不要
 
 flag = 0 #report the error , 1 for error
 ttt = 0
-XAUTHTOKEN = ['29555cc6-0d99-404f-9f21-80374e186006']#浏览器控制台或者抓包看
+XAUTHTOKEN = ['e1989070-9f4c-46b1-a286-da61173a4b1b']#浏览器控制台或者抓包看
 
 HOST = "http://skl.hdu.edu.cn"
 

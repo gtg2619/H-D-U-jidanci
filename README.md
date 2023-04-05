@@ -5,13 +5,13 @@
 安装依赖
 
 ```
-python3 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 键入`sessionId`及`WEEK`运行
 
 ```
-python3 ./usgae.py
+python ./usgae.py
 ```
 
 即可刷一次考试。
